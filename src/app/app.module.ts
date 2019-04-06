@@ -9,6 +9,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -24,7 +26,11 @@ import { DialogComponent } from './dialog/dialog.component';
     MatSliderModule,
     MatMenuModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatAutocompleteModule,
+    FormsModule,
+    ReactiveFormsModule
+    
   ],
   exports: [
   ],

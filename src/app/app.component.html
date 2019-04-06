@@ -8,10 +8,27 @@
 </div>
 <div class="col-md-6"> 
   <form class="example-form">
-   <input placeholder="jhkbsdlknfj">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Favorite food" value="Sushi">
+   <!-- <input placeholder="jhkbsdlknfj"> -->
+  <!-- <mat-form-field class="example-full-width">
+    <input matInput placeholder="Favorite food" [formControl]="myControl" [matAutocomplete]="auto">
   </mat-form-field>
+
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete> -->
+  <!-- </mat-form-field> -->
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option.id">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
 
   <mat-form-field class="example-full-width">
     <textarea matInput placeholder="Leave a comment"></textarea>
@@ -29,6 +46,16 @@
 
   
 </form>
+<!-- <form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form> -->
 <button mat-button [matMenuTriggerFor]="menu">Menu</button>
 <mat-menu #menu="matMenu">
   <button mat-menu-item>Item 1</button>
@@ -37,3 +64,9 @@
 <mat-card>Simple card</mat-card>
 
 </div>
+<!-- <div> -->
+  <div style="display: block;height: 200px;">one</div>
+  <div style="display: inline-block; background: #000;height: 150px;">two</div>
+  <div style="display: inline; background: #000;height: 200px;">three yitni nintgoiu uytit8oit oitoiuyh </div>
+  <div style="display: block; background: #000;">four</div>
+<!-- </div> -->

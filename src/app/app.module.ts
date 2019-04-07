@@ -11,12 +11,26 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {RouterModule, Routes} from '@angular/router';
+import { ItemcompComponent } from './itemcomp/itemcomp.component';
 
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'items',
+    pathMatch: 'full'
+  },
+  {
+    path: 'items',
+    component: ItemcompComponent,
+  }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    DialogComponent
+    DialogComponent,
+    ItemcompComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +43,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatDialogModule,
     MatAutocompleteModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
     
   ],
   exports: [

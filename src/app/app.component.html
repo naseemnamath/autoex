@@ -4,69 +4,85 @@
     Welcome to {{ title }}!
   </h1>
   <div class="btn btn-primary" (click)="openDialog()">heloo</div>
-<h2>Here are some links to help you start: </h2>
+  <div class="btn btn-info" [routerLink]="['/items']" routerLinkActive="router-link-active" >click Me</div>
+  <h2>Here are some links to help you start: </h2>
 </div>
 <div class="col-md-6"> 
   <form class="example-form">
-   <!-- <input placeholder="jhkbsdlknfj"> -->
-  <!-- <mat-form-field class="example-full-width">
-    <input matInput placeholder="Favorite food" [formControl]="myControl" [matAutocomplete]="auto">
-  </mat-form-field>
-
+    <!-- <input placeholder="jhkbsdlknfj"> -->
+    <!-- <mat-form-field class="example-full-width">
+      <input matInput placeholder="Favorite food" [formControl]="myControl" [matAutocomplete]="auto">
+    </mat-form-field>
+    
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let option of options" [value]="option">
         {{option}}
       </mat-option>
     </mat-autocomplete> -->
-  <!-- </mat-form-field> -->
-  <form class="example-form">
+    <!-- </mat-form-field> -->
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option.id">
+            {{option.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+    
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Leave a comment"></textarea>
+    </mat-form-field>
+    <div class="col-md-1">
+      <mat-checkbox>Check me!</mat-checkbox>
+    </div>
+    <!-- <mat-slider></mat-slider> -->
+    <mat-slider
+    thumbLabel
+    [displayWith]="formatLabel"
+    tickInterval="1000"
+    min="1"
+    max="100000"></mat-slider>
+    
+    
+  </form>
+  <!-- <form class="example-form">
     <mat-form-field class="example-full-width">
       <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option.id">
-          {{option.name}}
+        <mat-option *ngFor="let option of options" [value]="option">
+          {{option}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-  </form>
-
-  <mat-form-field class="example-full-width">
-    <textarea matInput placeholder="Leave a comment"></textarea>
-  </mat-form-field>
-  <div class="col-md-1">
-    <mat-checkbox>Check me!</mat-checkbox>
-  </div>
-  <!-- <mat-slider></mat-slider> -->
-  <mat-slider
-  thumbLabel
-  [displayWith]="formatLabel"
-  tickInterval="1000"
-  min="1"
-  max="100000"></mat-slider>
-
+  </form> -->
+  <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+  <mat-card>Simple card</mat-card>
   
-</form>
-<!-- <form class="example-form">
-  <mat-form-field class="example-full-width">
-    <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of options" [value]="option">
-        {{option}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-</form> -->
-<button mat-button [matMenuTriggerFor]="menu">Menu</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item>Item 1</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu>
-<mat-card>Simple card</mat-card>
-
 </div>
+<router-outlet></router-outlet>
+<form class="example-push" >
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Favorite Name" #taskyi>
+      </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Favorite id" #tasky>
+  </mat-form-field>
+  <button mat-button (click)=addTask(tasky.value,taskyi.value)>Click me!</button>
+</form>
+
+<app-dialog [optioz]="options"></app-dialog>
+
 <!-- <div> -->
-  <div style="display: block;height: 200px;">one</div>
+  <!-- <div style="display: block;height: 200px;">one</div>
   <div style="display: inline-block; background: #000;height: 150px;">two</div>
   <div style="display: inline; background: #000;height: 200px;">three yitni nintgoiu uytit8oit oitoiuyh </div>
-  <div style="display: block; background: #000;">four</div>
-<!-- </div> -->
+  <div style="display: block; background: #000;">four</div> -->
+  <!-- </div> -->
+  <!-- <div *ngFor="let item of optio"><div>{{item}}</div></div>
+  <div class="align-baseline">...............</div> -->

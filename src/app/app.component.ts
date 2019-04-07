@@ -24,9 +24,10 @@ export class AppComponent implements OnInit {
         map(name => name ? this._filter(name) : this.options.slice())
       );
   }
+  
   title = 'app';
   myControl = new FormControl();
-  // options: string[] = ['One', 'Two', 'Three'];
+  optio: string[] = ['One', 'Two', 'Three'];
   options: User[] = [
     {name: 'Mary', id: 101 },
     {name: 'Shelley', id: 102 },
@@ -65,6 +66,13 @@ export class AppComponent implements OnInit {
       })
       .afterClosed()
       // .subscribe(result => console.log(result));
+    }
+    addTask(id:number, value:  string) {
+      this.options.push(
+        {
+          id : id,
+          name: value
+        });
     }
   }
   
